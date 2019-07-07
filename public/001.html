@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+	  function from(){
+		  var $uname=uname.value;
+			var $upwd=upwd.value;
+			if(!$uname){
+			  alert("用户名不能为空");
+				return;
+			}
+			if(!$upwd){
+				alert('密码不能为空');
+				return;
+			};
+			var xhr=new XMLHttpRequest();
+			console.log(xhr);
+			xhr.onreadystatechange=function(){
+			  if(xhr.readyState==4&&xhr.status==200){
+				  var result=xhr.responseText;
+					if(result=='1'){
+						alert('登陆成功');
+					}else{alert('登录失败');}
+				};
+			};
+			xhr.open("get","/user/login/"+$uname+"&"+$upwd,true);
+			xhr.send();
+		}
+	</script>
+</head>
+<body>
+	用户名:<input type="text" id="uname"><br>
+	密码:<input type="text" id="upwd"><br>
+  <button onclick="from()">登录</button>
+</body>
+</html>

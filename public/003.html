@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+	  function getXML(){
+		  //1.创建xhr对象
+			var xhr=new XMLHttpRequest();
+			//绑定监听
+			xhr.onreadystatechange=function(){
+			  if(xhr.readyState==4&&xhr.status==200){
+				  var result=xhr.responseXML;
+					var aaa=result.getElementsByTagName('studentlist')[0];
+					console.log(aaa.length);
+					var bbb=aaa.getElementsByTagName('student')[2];
+					var ccc=bbb.getElementsByTagName('uid')[0];
+					console.log(ccc);
+				};
+			};
+			//打开链接
+			xhr.open('get','003.xml',true);
+			//发送请求
+			xhr.send();
+		}
+	</script>
+</head>
+<body>
+	<div id="d1"></div>
+	<button onclick="getXML()">显示所有用户</button>
+</body>
+</html>

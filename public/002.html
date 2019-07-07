@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+	  function from(){
+		  //1获取异步对象
+			var xhr=new XMLHttpRequest();
+      //4.绑定监听
+			xhr.onreadystatechange=function(){
+			  if(xhr.readyState==4&&xhr.status==200){
+				  var result=xhr.responseText;
+					console.log(result);
+          var arr=JSON.parse(result);
+					var html="";
+					for(var i=0;i<arr.length;i++){
+					  html+=`
+						  <tr>
+								<td>${arr[i].uid}</td>
+								<td>${arr[i].uname}</td>
+								<td>${arr[i].upwd}</td>
+								<td>${arr[i].email}</td>
+								<td>${arr[i].phone}</td>
+								<td>${arr[i].avatar}</td>
+								<td>${arr[i].user_name}</td>
+								<td>${arr[i].gender}</td>
+							</tr>
+						`;
+					};
+          uuuu.innerHTML=html;
+				};
+			};
+			//2.打开链接，创建请求
+			xhr.open('get','/user/reg',true);
+			//3.发送请求
+			xhr.send();
+		}
+	</script>
+</head>
+<body>
+  <table border="1px">
+  	<tr>
+  		<td>111</td>
+  		<td>222</td>
+  		<td>333</td>
+  		<td>444</td>
+  		<td>555</td>
+  		<td>666</td>
+  		<td>777</td>
+  		<td>888</td>
+  	</tr>
+		<tbody id="uuuu"></tbody>
+  </table>
+	<button onclick="from()">点我</button>
+</body>
+</html>
+
+
